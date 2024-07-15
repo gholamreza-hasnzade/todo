@@ -11,7 +11,10 @@ type TodoFormProps = {
 export const TodoForm: FC<TodoFormProps> = ({ onAdd }) => {
   const [text, setText] = useState<string>("");
 
+  
   const handleSubmit = (e: React.FormEvent) => {
+    console.log(e);
+    
     e.preventDefault();
     if (text.trim()) {
       onAdd(text);
@@ -19,14 +22,14 @@ export const TodoForm: FC<TodoFormProps> = ({ onAdd }) => {
     }
   };
   return (
-    <Form>
-      <Flex align="center" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
+      <Flex align="center" >
         <Input
           placeholder="please write here..."
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <Button>add Task</Button>
+        <Button type="submit">add Task</Button>
       </Flex>
     </Form>
   );
