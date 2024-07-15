@@ -6,8 +6,21 @@ import { TodoViewStyle as S } from "@/components/views/todo/todo.view.style";
 
 // * import components
 import { Flex, Typography } from "@/components/atoms";
+import { useState } from "react";
+import { TodoTemplate } from "@/components/Templates/todoTemplate.template";
 
 export const TodoView = () => {
+  const [todos, setTodos] = useState<{ id: number; text: string }[]>([]);
+
+  const addTodo = (text: string) => {
+    console.log('afafasf');
+    
+    setTodos([...todos, { id: Date.now(), text }]);
+  };
+
+  const deleteTodo = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
   return (
     <AppConfigurations>
       <S.Container>
@@ -23,12 +36,8 @@ export const TodoView = () => {
           </Typography>
         </Flex>
 
-        {/* <Form>
-          <Flex align="center">
-            <Input placeholder="please write here..." />
-            <Button>add Task</Button>
-          </Flex>
-        </Form> */}
+        
+        <TodoTemplate todos={todos} onAdd={addTodo} onDelete={deleteTodo} />
       </S.Container>
     </AppConfigurations>
   );

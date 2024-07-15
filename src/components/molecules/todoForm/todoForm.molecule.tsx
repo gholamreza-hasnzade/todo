@@ -9,7 +9,7 @@ type TodoFormProps = {
 };
 
 export const TodoForm: FC<TodoFormProps> = ({ onAdd }) => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
