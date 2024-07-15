@@ -5,7 +5,7 @@ import { AppConfigurations } from "@/configs/app-configurations/app.configuratio
 import { TodoViewStyle as S } from "@/components/views/todo/todo.view.style";
 
 // * import components
-import { Flex, Typography, Input, Button } from "@/components/atoms";
+import { Flex, Typography, Input, Button, Form } from "@/components/atoms";
 
 export const TodoView = () => {
   return (
@@ -23,10 +23,12 @@ export const TodoView = () => {
           </Typography>
         </Flex>
 
-        <Flex align="center">
-          <Input placeholder="please write here..." />
-          <Button >add Task</Button>
-        </Flex>
+        <Form>
+          <Flex align="center">
+            <Input placeholder="please write here..." />
+            <Button>add Task</Button>
+          </Flex>
+        </Form>
       </S.Container>
     </AppConfigurations>
   );
