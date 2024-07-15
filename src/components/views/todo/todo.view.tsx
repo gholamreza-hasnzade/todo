@@ -1,7 +1,5 @@
-import React from 'react'
+import { AppConfigurations } from "@/configs/app-configurations/app.configurations";
 
 export const TodoView = () => {
-  return (
-    <div>TodoView</div>
-  )
-}
+  return <AppConfigurations>TodoView</AppConfigurations>;
+};
