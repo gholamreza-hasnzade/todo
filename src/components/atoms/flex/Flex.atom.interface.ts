@@ -1,6 +1,10 @@
-import { ReactNode } from 'react';
+// * Import necessary types
 
-export interface IFlex {
+import { ReactNode } from 'react';
+import { BoxProps } from '@mui/material/Box';
+
+
+export interface IFlex extends BoxProps {
     direction?: 'row' | 'column';
     justify?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
     align?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
@@ -9,4 +13,6 @@ export interface IFlex {
     children?: ReactNode;
     height?: number;
     width?: number;
+    background?: string;
+    borderRadius?: number;
 }

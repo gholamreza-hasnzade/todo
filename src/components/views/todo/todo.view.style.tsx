@@ -1,17 +1,17 @@
-
 // * Import Tools
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
+// * import @mui/material
+import { Box as BoxMUI } from "@mui/material";
 
+const Container = styled(BoxMUI)`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+`;
 
-const Container  = styled("div")`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-`
-
-export const TodoViewStyle =  {
-    Container 
-}
+export const TodoViewStyle = {
+  Container,
+};

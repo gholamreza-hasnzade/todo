@@ -9,13 +9,12 @@ import { Button as ButtonMUI } from "@mui/material";
 
 // Import a button styling library like `@emotion/react` or a custom solution
 
-const ButtonES = styled(ButtonMUI)<IButton>`
+const SButton = styled(ButtonMUI)<IButton>`
   /* Base styles for all buttons (padding, font size, etc.) */
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  height: 35px;
-  width: 100%;
+  height: 40px;
   cursor: pointer;
   outline: none;
 `;
@@ -29,7 +28,7 @@ export const Button: FC<IButton> = ({
   ...rest
 }) => {
   return (
-    <ButtonES
+    <SButton
       className={className}
       style={style}
       aria-label={ariaLabel}
@@ -38,6 +37,6 @@ export const Button: FC<IButton> = ({
       {...rest}
     >
       {children}
-    </ButtonES>
+    </SButton>
   );
 };

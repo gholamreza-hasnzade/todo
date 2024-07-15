@@ -6,6 +6,7 @@ declare module '@emotion/react' {
   export interface Theme {
     BLACK: string;
     WHITE: string;
+    PRIMARY: string;
   }
 }
 
@@ -14,6 +15,7 @@ const BASE_COLORS: Theme = {
   // other theme properties...
     WHITE: '#ffffff',
     BLACK: '#000000',
+    PRIMARY: '#000000',
 };
 
 export const THEME_DARK = {

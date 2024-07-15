@@ -1,11 +1,14 @@
 // * import tools
-import React, { FC } from 'react';
+import  { FC } from 'react';
 import styled from '@emotion/styled';
 
-// *
-import { IFlex } from '@/components/_atoms/flex/Flex.atom.interface';
+// * import interface
+import { IFlex } from '@/components/atoms/flex/Flex.atom.interface';
 
-const Flex = styled.div<IFlex>`
+// * import material
+import { Box  as BoxMUI} from '@mui/material';
+
+const SFlex = styled(BoxMUI)<IFlex>`
   display: flex;
   flex-direction: ${({ direction }) => direction || 'row'};
   justify-content: ${({ justify }) => justify || 'flex-start'};
@@ -14,11 +17,9 @@ const Flex = styled.div<IFlex>`
   gap: ${({ gap }) => gap || '0'};
   height: ${({ height }) => `${height}px` || 'unset'};
   width: ${({ width }) => `${width}px` || 'unset'};
-  /*   margin-top: 16px; */
-  &:not(:last-child) {
-    margin-bottom: 12px;
-  }
+  background: ${({ background }) => background || 'transparent'};
+  border-radius: ${({ borderRadius }) => `${borderRadius}px` || 'unset'};
 `;
-export const FlexAtom: FC<IFlex> = ({ children, ...rest }) => {
-  return <Flex {...rest}>{children}</Flex>;
+export const Flex: FC<IFlex> = ({ children, ...rest }) => {
+  return <SFlex {...rest}>{children}</SFlex>;
 };
