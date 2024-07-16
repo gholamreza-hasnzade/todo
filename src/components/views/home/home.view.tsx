@@ -1,10 +1,6 @@
-import React from 'react'
-
-
-import Board from '@/components/Templates/Board'
+// * import components
+import { Board } from "@/components/Templates";
 
 export const HomeView = () => {
-  return (
-    <Board />
-  )
-}
+  return <Board />;
+};

@@ -21,7 +21,7 @@ const STaskList = styled.div`
   padding: 16px;
   gap: 8px;
 `;
-const TaskList: React.FC<TaskListProps> = ({ tasks, status, onDropTask }) => {
+export const TaskList: React.FC<TaskListProps> = ({ tasks, status, onDropTask }) => {
   const [, dropRef] = useDrop(() => ({
     accept: "task",
     drop: (item: { id: number }) => onDropTask(item.id, status),
@@ -35,5 +35,3 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status, onDropTask }) => {
     </STaskList>
   );
 };
-
-export default TaskList;

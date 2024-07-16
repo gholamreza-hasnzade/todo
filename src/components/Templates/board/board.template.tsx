@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+// * import tools
+import { FC, useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+//* import components
 import { Button, Flex, Input, Typography } from "@/components/atoms";
-import TaskList from "@/components/organisms/TaskList";
+import { TaskList } from "@/components/organisms";
 import { Task } from "@/components/types";
 
-const Board: React.FC = () => {
+export const Board: FC = () => {
+    
   const [tasks, setTasks] = useState<Task[]>([
     { id: 1, title: "Task 1", status: "todo" },
     { id: 2, title: "Task 2", status: "in-progress" },
@@ -41,7 +44,13 @@ const Board: React.FC = () => {
     <Flex height={"100vh"} width="100%" flexDirection="column">
       <DndProvider backend={HTML5Backend}>
         <Flex align="center" flexDirection="column" width="100%" height="100%">
-          <Flex flexDirection="column" width="100%" height="20%" justify="center" align="center">
+          <Flex
+            flexDirection="column"
+            width="100%"
+            height="20%"
+            justify="center"
+            align="center"
+          >
             <Flex>
               <Input
                 value={newTaskTitle}
@@ -101,5 +110,3 @@ const Board: React.FC = () => {
     </Flex>
   );
 };
-
-export default Board;
