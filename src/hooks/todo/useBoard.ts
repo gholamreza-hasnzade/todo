@@ -1,41 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Task } from "@/constants/types/task/task.constant";
 
-export const useBoard = () => {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: "Task 1", status: "todo" },
-    { id: 2, title: "Task 2", status: "in-progress" },
-    { id: 3, title: "Task 3", status: "done" },
-  ]);
+const LOCAL_STORAGE_KEY = "tasks";
 
-  const [newTaskTitle, setNewTaskTitle] = useState<string>("");
+export const useBoard = () => {
+  const [state, setState] = useState<{
+    tasks: Task[];
+    newTaskTitle: string;
+  }>({
+    tasks: [],
+    newTaskTitle: "",
+  });
+
+  useEffect(() => {
+    const savedTasks = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (savedTasks) {
+      setState((prevState) => ({
+        ...prevState,
+        tasks: JSON.parse(savedTasks),
+      }));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (state.tasks.length > 0) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state.tasks));
+    }
+  }, [state.tasks]);
 
   const handleDropTask = (
     taskId: number,
     newStatus: "todo" | "in-progress" | "done"
   ) => {
-    setTasks((prev) =>
-      prev.map((task) =>
+    setState((prevState) => ({
+      ...prevState,
+      tasks: prevState.tasks.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
-      )
-    );
+      ),
+    }));
   };
 
   const handleCreateTask = () => {
-    if (newTaskTitle.trim()) {
+    if (state.newTaskTitle.trim()) {
       const newTask: Task = {
-        id: tasks.length + 1,
-        title: newTaskTitle,
+        id: state.tasks.length + 1,
+        title: state.newTaskTitle,
         status: "todo",
       };
-      setTasks([...tasks, newTask]);
-      setNewTaskTitle("");
+      setState((prevState) => ({
+        ...prevState,
+        tasks: [...prevState.tasks, newTask],
+        newTaskTitle: "",
+      }));
     }
   };
 
+  const setNewTaskTitle = (title: string) => {
+    setState((prevState) => ({
+      ...prevState,
+      newTaskTitle: title,
+    }));
+  };
+
   return {
-    tasks,
-    newTaskTitle,
+    tasks: state.tasks,
+    newTaskTitle: state.newTaskTitle,
     setNewTaskTitle,
     handleDropTask,
     handleCreateTask,
