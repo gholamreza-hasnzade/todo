@@ -4,7 +4,8 @@ import { useDrag } from "react-dnd";
 import styled from "@emotion/styled";
 
 // * import types
-import { Task } from "@/components/types";
+import { Task } from "@/constants/types/task/task.constant";
+// * import components
 import { Typography } from "@/components/atoms";
 
 type TaskItemProps = {
@@ -41,7 +42,7 @@ const Driver = styled.div<{ status: 'todo' | 'in-progress' | 'done' }>`
   }};
 `;
 export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
-  console.log(task);
+ 
   
   const [, dragRef] = useDrag(() => ({
     type: "task",

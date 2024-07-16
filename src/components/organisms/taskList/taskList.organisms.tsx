@@ -3,7 +3,10 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import styled from "@emotion/styled";
 
-import { Task } from "@/components/types";
+// * import types
+import { Task } from "@/constants/types/task/task.constant";
+
+// * import components
 import { TaskItem } from "@/components/molecules";
 
 type TaskListProps = {

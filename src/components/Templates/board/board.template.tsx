@@ -6,7 +6,8 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 //* import components
 import { Button, Flex, Input, Typography } from "@/components/atoms";
 import { TaskList } from "@/components/organisms";
-import { Task } from "@/components/types";
+import { Task } from "@/constants/types/task/task.constant";
+
 
 export const Board: FC = () => {
     
