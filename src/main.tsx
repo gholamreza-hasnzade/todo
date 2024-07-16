@@ -1,12 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
+import { HomeView } from "@/components/views";
+import { AppConfigurations } from "@/configs/app-configurations/app.configurations";
 
-import {HomeView} from "@/components/views";
-
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-   <HomeView />
-  </React.StrictMode>,
-)
+    <AppConfigurations>
+      <HomeView />
+    </AppConfigurations>
+  </React.StrictMode>
+);

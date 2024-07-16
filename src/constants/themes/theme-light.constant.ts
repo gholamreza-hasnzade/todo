@@ -18,10 +18,7 @@ const BASE_COLORS: Theme = {
   PRIMARY: '#ef4056',
 };
 
-/* const BASE_COLORS = {
-    WHITE: '#ffffff',
-    BLACK: '#000000',
-}; */
+
 
 export const THEME_LIGHT = {
   ...BASE_COLORS,
