@@ -39,5 +39,10 @@ export default defineConfig({
       replacement: path.resolve(__dirname, './src/hooks')
     },
     ],
-  }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './setupTests.ts', // Specify the setup file
+  },
 })
