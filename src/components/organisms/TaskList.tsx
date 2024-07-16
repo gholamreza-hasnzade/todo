@@ -6,8 +6,8 @@ import TaskItem from '@/components/molecules/TaskItem';
 
 type TaskListProps = {
   tasks: Task[];
-  status: string;
-  onDropTask: (taskId: number, status: string) => void;
+  status: 'todo' | 'in-progress' | 'done';
+  onDropTask: (taskId: number, status: 'todo' | 'in-progress' | 'done') => void;
 };
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, status, onDropTask }) => {

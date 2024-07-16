@@ -15,7 +15,10 @@ const Board: React.FC = () => {
   ]);
   const [newTaskTitle, setNewTaskTitle] = useState<string>("");
 
-  const handleDropTask = (taskId: number, newStatus: string) => {
+  const handleDropTask = (
+    taskId: number,
+    newStatus: "todo" | "in-progress" | "done"
+  ) => {
     setTasks((prev) =>
       prev.map((task) =>
         task.id === taskId ? { ...task, status: newStatus } : task
