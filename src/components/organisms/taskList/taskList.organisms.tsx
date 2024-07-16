@@ -1,6 +1,5 @@
 // * import tools
 import React from "react";
-import { useDrop } from "react-dnd";
 import styled from "@emotion/styled";
 
 // * import types
@@ -8,6 +7,12 @@ import { Task } from "@/constants/types/task/task.constant";
 
 // * import components
 import { TaskItem } from "@/components/molecules";
+
+
+// * import hook
+import {useTaskList } from "@/hooks/todo/useTaskList";
+
+
 
 type TaskListProps = {
   tasks: Task[];
@@ -25,10 +30,7 @@ const STaskList = styled.div`
   gap: 8px;
 `;
 export const TaskList: React.FC<TaskListProps> = ({ tasks, status, onDropTask }) => {
-  const [, dropRef] = useDrop(() => ({
-    accept: "task",
-    drop: (item: { id: number }) => onDropTask(item.id, status),
-  }));
+  const { dropRef } = useTaskList(status, onDropTask);
 
   return (
     <STaskList ref={dropRef}>

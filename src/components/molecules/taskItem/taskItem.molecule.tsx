@@ -1,13 +1,15 @@
 // * import tools
 import React from "react";
-import { useDrag } from "react-dnd";
 import styled from "@emotion/styled";
 
 // * import types
 import { Task } from "@/constants/types/task/task.constant";
 // * import components
 import { Typography } from "@/components/atoms";
-import {Card} from "@mui/material"
+import { Card } from "@mui/material";
+
+// * import hooks
+import { useTaskItem } from "@/hooks/todo/useTaskItem";
 
 type TaskItemProps = {
   task: Task;
@@ -23,35 +25,19 @@ const STaskItem = styled(Card)`
   overflow: hidden;
 `;
 
-const Driver = styled.div<{ status: 'todo' | 'in-progress' | 'done' }>`
+const Driver = styled.div<{ statusColor: string }>`
   position: absolute;
   left: 0;
   top: 0;
   height: 100%;
   width: 5px;
-  background-color: ${({ status }) => {
-    switch (status) {
-      case 'todo':
-        return 'red';
-      case 'in-progress':
-        return 'yellow';
-      case 'done':
-        return 'green';
-      default:
-        return 'gray';
-    }
-  }};
+  background-color: ${({ statusColor }) => statusColor};
 `;
 export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
- 
-  
-  const [, dragRef] = useDrag(() => ({
-    type: "task",
-    item: { id: task.id },
-  }));
+  const { dragRef, statusColor } = useTaskItem(task);
   return (
     <STaskItem ref={dragRef}>
-      <Driver status={task.status} />
+      <Driver statusColor={statusColor} />
       <Typography>{task?.title}</Typography>
     </STaskItem>
   );

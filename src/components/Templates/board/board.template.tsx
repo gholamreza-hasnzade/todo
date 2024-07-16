@@ -1,45 +1,22 @@
 // * import tools
-import { FC, useState } from "react";
+import { FC } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 //* import components
 import { Button, Flex, Input, Typography } from "@/components/atoms";
 import { TaskList } from "@/components/organisms";
-import { Task } from "@/constants/types/task/task.constant";
-
+// * import custom hooks
+import { useBoard } from "@/hooks/todo/useBoard";
 
 export const Board: FC = () => {
-    
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, title: "Task 1", status: "todo" },
-    { id: 2, title: "Task 2", status: "in-progress" },
-    { id: 3, title: "Task 3", status: "done" },
-  ]);
-  const [newTaskTitle, setNewTaskTitle] = useState<string>("");
-
-  const handleDropTask = (
-    taskId: number,
-    newStatus: "todo" | "in-progress" | "done"
-  ) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === taskId ? { ...task, status: newStatus } : task
-      )
-    );
-  };
-
-  const handleCreateTask = () => {
-    if (newTaskTitle.trim()) {
-      const newTask: Task = {
-        id: tasks.length + 1,
-        title: newTaskTitle,
-        status: "todo",
-      };
-      setTasks([...tasks, newTask]);
-      setNewTaskTitle("");
-    }
-  };
+  const {
+    tasks,
+    newTaskTitle,
+    setNewTaskTitle,
+    handleDropTask,
+    handleCreateTask,
+  } = useBoard();
 
   return (
     <Flex height={"100vh"} width="100%" flexDirection="column">
