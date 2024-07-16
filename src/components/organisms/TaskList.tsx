@@ -4,7 +4,7 @@ import { useDrop } from "react-dnd";
 import styled from "@emotion/styled";
 
 import { Task } from "@/components/types";
-import TaskItem from "@/components/molecules/TaskItem";
+import { TaskItem } from "@/components/molecules";
 
 type TaskListProps = {
   tasks: Task[];

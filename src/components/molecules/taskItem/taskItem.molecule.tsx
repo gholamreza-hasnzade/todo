@@ -17,12 +17,10 @@ const STaskItem = styled.div`
   border-radius: 8px;
   cursor: pointer;
 `;
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
+export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const [, dragRef] = useDrag(() => ({
     type: "task",
     item: { id: task.id },
   }));
   return <STaskItem ref={dragRef}>{task.title}</STaskItem>;
 };
-
-export default TaskItem;
