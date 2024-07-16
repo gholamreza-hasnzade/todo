@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { TodoView } from '@/components/views'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <TodoView />
+   <h1>2</h1>
   </React.StrictMode>,
 )
