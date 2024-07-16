@@ -1,19 +1,28 @@
-import React from 'react';
-import { useDrag } from 'react-dnd';
+// * import tools
+import React from "react";
+import { useDrag } from "react-dnd";
+import styled from "@emotion/styled";
 
-import { Task } from '@/components/types';
+// * import types
+import { Task } from "@/components/types";
 
 type TaskItemProps = {
   task: Task;
 };
 
+const STaskItem = styled.div`
+  width: 100%;
+  height: 150px;
+  background: red;
+  border-radius: 8px;
+  cursor: pointer;
+`;
 const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
-
   const [, dragRef] = useDrag(() => ({
-    type: 'task',
+    type: "task",
     item: { id: task.id },
   }));
-  return <div ref={dragRef}>{task.title}</div>;
+  return <STaskItem ref={dragRef}>{task.title}</STaskItem>;
 };
 
 export default TaskItem;
