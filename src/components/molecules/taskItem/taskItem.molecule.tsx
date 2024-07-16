@@ -7,12 +7,13 @@ import styled from "@emotion/styled";
 import { Task } from "@/constants/types/task/task.constant";
 // * import components
 import { Typography } from "@/components/atoms";
+import {Card} from "@mui/material"
 
 type TaskItemProps = {
   task: Task;
 };
 
-const STaskItem = styled.div`
+const STaskItem = styled(Card)`
   width: 100%;
   height: 150px;
   background-color: ${({ theme }) => theme.WHITE};
