@@ -21,7 +21,5 @@ const SFlex = styled(BoxMUI)<IFlex>`
   border-radius: ${({ borderRadius }) => `${borderRadius}px` || 'unset'};
 `;
 export const Flex: FC<IFlex> = ({ children, ...rest }) => {
-
-  
   return <SFlex {...rest}>{children}</SFlex>;
 };

@@ -24,12 +24,12 @@ const SInput = styled.input<IInput>`
         `;
       case "outline":
         return `
-          background-color: transparent;
+          background-color: rgba(0, 0, 0, 0);;
           border: 1px solid #ccc;
         `;
       case "tertiary":
         return `
-          background-color: transparent;
+          background-color: rgba(0, 0, 0, 0);
           border-bottom: 1px solid #007bff;
         `;
       default:
